@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Test2.Models.Product>
+
+@{
+    ViewBag.Title = "GetProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetProductList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddProduct")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditProduct", new { id=item.ProductID }) |
+            @Html.ActionLink("Details", "GetProductList", new { id=item.ProductID }) |
+            @Html.ActionLink("Delete", "DeleteProduct", new { id=item.ProductID })
+        </td>
+    </tr>
+}
+
+</table>
